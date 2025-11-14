@@ -1,5 +1,5 @@
 # AtemTallyWithM5AtomMatrix working with Bitfocus Companion
-# ATEM M5Stack ワイヤレスタリーシステム (Companion 統合 / GUI-less 版) `README.md`
+# ATEM M5Stack ワイヤレスタリーシステム (Companion 統合 / GUI-less 版)
 
 ## 1\. 概要 (Project Overview)
 
@@ -35,9 +35,9 @@ graph LR
     end
 
     subgraph "On-Camera Units (Wi-Fi)"
-        M5_1[M5Stack (Cam 1)]
-        M5_2[M5Stack (Cam 2)]
-        M5_N[M5Stack (Cam N)]
+        NodeCam1["M5Stack (Cam 1)"]
+        NodeCam2["M5Stack (Cam 2)"]
+        NodeCamN["M5Stack (Cam N)"]
     end
 
     %% Connections
@@ -49,9 +49,9 @@ graph LR
     Comp -- Publishes Tally (atem/tally/state) --> MQTT
     Comp -- Publishes Call (companion/call) --> MQTT
     
-    MQTT -- Tally & Call 情報を購読 --> M5_1
-    MQTT -- Tally & Call 情報を購読 --> M5_2
-    MQTT -- Tally & Call 情報を購読 --> M5_N
+    MQTT -- Tally & Call 情報を購読 --> NodeCam1
+    MQTT -- Tally & Call 情報を購読 --> NodeCam2
+    MQTT -- Tally & Call 情報を購読 --> NodeCamN
 ```
 
 ### コンポーネントの役割
