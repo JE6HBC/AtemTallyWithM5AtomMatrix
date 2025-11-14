@@ -198,6 +198,17 @@ graph LR
 
 ここがGUI-less版の核心です。
 
+> **⚠️ 重要: IPアドレスの設定**
+>
+> ファームウェアをM5Stackに書き込む前に、必ず `m5/src/main.cpp` ファイルを開き、以下の行を編集してください。
+>
+> ```cpp
+> // IMPORTANT: Replace with the IP address of the computer running Docker and Mosquitto.
+> const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
+> ```
+>
+> `YOUR_MQTT_BROKER_IP` の部分を、Dockerを実行しているPCの**ローカルネットワークIPアドレス**（例: `"192.168.1.50"`）に書き換えてください。このIPアドレスは、M5StackがMQTTブローカーに接続するために必須です。
+
 1.  **PlatformIO プロジェクト作成:**
 
       * VSCode + PlatformIOで `m5stack-atom` ボードのプロジェクトを作成します。

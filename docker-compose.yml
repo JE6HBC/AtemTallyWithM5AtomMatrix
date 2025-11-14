@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mqtt:
+    build:
+      context: ./mqtt
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    restart: unless-stopped
+
+  companion:
+    image: bitfocus/companion:latest
+    container_name: companion
+    # Use host network to allow Companion to easily discover and control
+    # ATEM switchers on the local network.
+    network_mode: host
+    restart: unless-stopped
+    depends_on:
+      - mqtt
